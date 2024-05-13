@@ -1,0 +1,28 @@
+const tecnologias = [
+	"Java",
+	"Javascript",
+	"Python",
+	"React"
+]
+const personas = [
+	{nombre:"Juan",edad:30},
+	{nombre:"Maria",edad:25},
+	{nombre:"Carlos",edad:20},
+	{nombre:"Ana",edad:35},
+]
+
+const numeros = [10, 20, 30, 40]
+
+1. Obtener un arreglo del cuadrado de cada numero del arreglo numeros
+2. Obtener todos los numeros mayores a 20 del arreglo numeros
+3. Obtener todas las tecnologias diferentes a React del arreglo tecnologias
+4. Obtener la o las personas mayores a 25 anios en el areglo personas
+5. Sumar todos los valores del arreglo numeros
+6. Verificar si todos los elementos del arrelgo numeros son mayores a 0
+7. Sumar todas las edades de las personas del arreglo personas.
+8. Verificar si todas las edades del arreglo personas son mayores a 18 anios
+9. Duplicar todas las edades en el arreglo personas
+
+Requisitos deseables
+* Usar las funciones para arreglos
+* Usar funciones flecha para los callbacks
