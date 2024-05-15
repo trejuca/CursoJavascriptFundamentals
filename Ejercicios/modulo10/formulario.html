@@ -1,32 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Formulario Completo</title>
+<meta charset="UTF-8">
+<title>Formulario Completo</title>
+
 </head>
 <body>
-    <!-- Enlace -->
-    <a href="https://www.ejemplo.com">Enlace Ejemplo</a>
-    <br><br>
+	<!-- Enlace -->
+	<div id="contendorEnlaces">
+		<a href="https://google.com">Hacer una busqueda</a> <br> 
+		<a href="https://outlook.com">Abrir correo</a><br>
+		<button id="botonEliminar">Eliminar enlaces</button>
+	</div>
 
-    <!-- Cajas de texto -->
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" value="Juan"><br>
-    
-    <label for="email">Correo Electrónico:</label>
-    <input type="email" id="email" name="email" value="juan@example.com"><br>
-    
-    <label for="contraseña">Contraseña:</label>
-    <input type="password" id="contraseña" name="contraseña" value="123456"><br>
-    <br>
+	<!-- Cajas de texto -->
+	<label for="nombre" class="clase1 clase2">Nombre:</label>
+	<input type="text" id="nombre" name="nombre" value="Juan" class="caja" />
+	<br>
 
-    <!-- Etiqueta -->
-    <label for="color">Color de Fondo:</label>
-    <input type="color" id="color" name="color" value="#ff0000"><br>
-    <br>
+	<label for="email" class="clase2">Correo Electrónico:</label>
+	<input type="email" id="email" name="email" value="juan@example.com" class="caja" />
+	<br>
 
-    <!-- Botón de envío -->
-    <button type="submit" id="enviarFormulario">Enviar Formulario</button>
+	<label for="contraseña" class="clase1">Contraseña:</label>
+	<input type="password" id="contraseña" name="contraseña" value="123456" class="caja" />
+	<br>
+	<br>
+
+	<!-- Etiqueta -->
+	<label for="color">Color de Fondo:</label>
+	<input type="color" id="color" name="color" value="#ff0000"/>
+	<br>
+	<br>
+
+	<!-- Botón de envío -->
+	<button id="enviarFormulario" onclick="recolectarDatos()">Enviar Formulario</button><br/>
+
+	<!-- Formulario para cambiar titulo a la pagina -->
+	<div>
+		<label>Titulo de la pagina:</label> 
+		<input type="text" id="nuevoTitulo"/> <br><br>
+		<button onclick="cambiarTitulo()">Cambiar titulo</button>
+	</div>
+
+	<script type="text/javascript" src="ejercicios.js"></script>
+
 
 
 </body>
