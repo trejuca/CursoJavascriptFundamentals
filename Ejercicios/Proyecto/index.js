@@ -48,13 +48,15 @@ const cargarUsuario = (usuario) => {
 const construirUsuario = () => {
 	
 	const usuario = {}
+	const nombresColumnas = {}
 	
 	document.querySelectorAll(".usuario-form").forEach(nodo => {
 		usuario[nodo.id] = nodo.value
+		nombresColumnas[nodo.id] = nodo.dataset.columnName
 		nodo.value = ""
 	})
 	
-	return usuario
+	return { usuario, nombresColumnas }
 }
 
 /**
@@ -62,8 +64,12 @@ const construirUsuario = () => {
  */
 const guardarUsuario = () => {
 	
-	const usuario = construirUsuario()
+	const {usuario, nombresColumnas } = construirUsuario()
 	localStorage.setItem(usuario.id, JSON.stringify(usuario))
+	tablaComponent.construirTabla("tabla-usuarios", nombresColumnas)
+	tablaComponent.actualizarTabla(usuario)
 }
+
+
 
 
