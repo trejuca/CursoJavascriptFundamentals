@@ -3,6 +3,7 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Insert title here</title>
+	
 </head>
 <body>
 	<table border="1">
@@ -16,7 +17,11 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="button" id="buscar" value="Buscar usuario"></button>
+				<input 
+					type="button" 
+					id="buscar" 
+					value="Buscar usuario"
+					onclick="buscarUsuario()">
 			</td>
 		</tr>
 	</table><br/>
@@ -27,7 +32,7 @@
 				<label>Id: </label>
 			</td>
 			<td>
-				<input type="text" id="id" name="id"/>
+				<input type="text" id="id" name="id" class="usuario-form"/>
 			</td>
 		</tr>
 		<tr>
@@ -35,7 +40,7 @@
 				<label>Nombre: </label>
 			</td>
 			<td>
-				<input type="text" id="name" name="name"/>
+				<input type="text" id="name" name="name" class="usuario-form"/>
 			</td>
 		</tr>
 		<tr>
@@ -43,7 +48,7 @@
 				<label>Nombre de usuario: </label>
 			</td>
 			<td>
-				<input type="text" id="username" name="username"/>
+				<input type="text" id="username" name="username" class="usuario-form"/>
 			</td>
 		</tr>
 		<tr>
@@ -51,14 +56,22 @@
 				<label>Email: </label>
 			</td>
 			<td>
-				<input type="text" id="email" name="email"/>
+				<input type="text" id="email" name="email" class="usuario-form"/>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="button" id="buscar" value="Guardar usuario"></button>
+				<input 
+					type="button" 
+					id="buscar" 
+					value="Guardar usuario"
+					onclick="guardarUsuario()"></button>
 			</td>
 		</tr>
 	</table>
+	<div id="tabla">
+		
+	</div>
+	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>
