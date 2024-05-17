@@ -1,74 +1,88 @@
 
-const API = "https://jsonplaceholder.typicode.com"
-const API_USER = "users"
-const API_COMMENT = "/comment"
+// Constante para el tipo de api a aconsultar
+const API = "users"
+// URL de la api a consultare
+const URL = `https://jsonplaceholder.typicode.com/${API}`
 
 /**
-	Buscar usuario
+
  */
- const buscarUsuario = async () => {
+const consultarUsuario = async (id) => {
 	
-	const id = document.querySelector("#busqueda").value
-	
-	try {
-		const usuario = await fetch(`${API}/${API_USER}/${id}`)
+	try {		
+		const usuario = await fetch(`${URL}/${id}`)
 		
-		if(!usuario.ok) {
-			throw new Error("No se encontro el usuario")
+		if (!usuario.ok) {
+			throw new Error(`No se encontro el usuario con el id: ${id}`)
 		}
-		
 		const usuarioJson = await usuario.json()
 		cargarUsuario(usuarioJson)
-	} catch(error) {
+		
+	} catch (error) {
 		alert(error)
 	}
 }
 
-/**
-	Funcion para distribuir los datos del objeto
-	en el formulario
- */
+const leerUsuarioId = () => {
+	const usuarioId = document.querySelector("#busqueda").value
+	consultarUsuario(usuarioId)
+}
+
 const cargarUsuario = (usuario) => {
-	
-	Object.keys(usuario).forEach(function(llave) {
-		
+	Object.keys(usuario).forEach(llave => {
 		let nodo = document.querySelector(`#${llave}`)
 		
 		if (nodo !== null) {
-			nodo.value = usuario[llave]	
+			nodo.value = usuario[llave]
 		}
-
 	})
 }
 
-/**
-	Funcion que recupera la informacion del formulario
-	y la almacena en un nuevo objeto
- */
+const guardarUsuario = () => {
+	
+	const {usuario} = construirUsuario()
+	console.log(usuario)	
+	localStorage.setItem(usuario.id, JSON.stringify(usuario))
+	//tablaComponente.actualizarTabla(usuario)
+	tablaComponente.destruirTabla(tablaComponente.tabla)
+	inicializarAplicacion()
+}
+
+const inicializarAplicacion = () => {
+	
+	const {nombresColumnas} = construirUsuario()
+	console.log("inicia")
+	tablaComponente.construirTabla("tabla-resultados", nombresColumnas)
+	
+	// Verificar si hay registros existentes en el localstorage
+//	for (let index = 0; index < localStorage.length; index++) {
+//		const usuario = JSON.parse(localStorage.getItem(localStorage.key(index)))
+//		tablaComponente.actualizarTabla(usuario)
+//	}
+	Object.keys(localStorage).forEach((valor) => {
+		const usuario = JSON.parse(localStorage.getItem(valor))
+		tablaComponente.actualizarTabla(usuario)
+	})
+
+}
+
 const construirUsuario = () => {
 	
 	const usuario = {}
 	const nombresColumnas = {}
 	
-	document.querySelectorAll(".usuario-form").forEach(nodo => {
+	document.querySelectorAll(".user-form").forEach(nodo => {
 		usuario[nodo.id] = nodo.value
-		nombresColumnas[nodo.id] = nodo.dataset.columnName
+		//nombresColumnas[nodo.value] = nodo.dataset.nombreColumna
+		//nombresColumnas[nodo.value] = nodo.dataset['nombreColumna']
+		nombresColumnas[nodo.id] = nodo.getAttribute("data-nombre-columna")
 		nodo.value = ""
 	})
 	
-	return { usuario, nombresColumnas }
+	return {usuario, nombresColumnas}
 }
 
-/**
-	Funcion que guardar un objeto usuario en localstorage
- */
-const guardarUsuario = () => {
-	
-	const {usuario, nombresColumnas } = construirUsuario()
-	localStorage.setItem(usuario.id, JSON.stringify(usuario))
-	tablaComponent.construirTabla("tabla-usuarios", nombresColumnas)
-	tablaComponent.actualizarTabla(usuario)
-}
+
 
 
 
